@@ -1,0 +1,42 @@
+#! /bin/sh
+
+sxhkd &
+
+bspc monitor -d I II III
+
+bspc config border_width        3
+bspc config window_gap          7
+bspc config focused_border_color "#9494ff"
+bspc config normal_border_color "#fffaf0"
+#bspc config active_border_color "#487799"
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config paddingless_monocle true
+bspc config single_monocle false
+bspc config top_padding 15
+bspc config right_padding 5
+bspc config bottom_padding 5
+bspc config left_padding 5
+bspc config focus_follows_pointer true
+
+#bspc config gapless_monocle      true
+
+# rule
+
+bspc rule -a firefox desktop='^2' follow=on focus=on
+bspc rule -a termite desktop=^3 follow=on focus=on state=floating
+bspc rule -a thunar follow=on state=floating
+bspc rule -a feh follow=on state=floating
+# start
+
+xsetroot -cursor_name left_ptr &
+
+feh --bg-scale /home/wave/wallpaper.jpg &
+
+polybar wave &
+
+pulseaudio --start &
+
+xset +fp /path/to/tewi-font/out &
+
+compton -b &
